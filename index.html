@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>habits</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			// Initialize storage API
+			window.storage = {
+				get: async (key) => {
+					try {
+						const value = localStorage.getItem(key);
+						return value ? { value } : null;
+					} catch (e) {
+						console.error("Storage get error:", e);
+						return null;
+					}
+				},
+				set: async (key, value) => {
+					try {
+						localStorage.setItem(key, value);
+						return true;
+					} catch (e) {
+						console.error("Storage set error:", e);
+						return false;
+					}
+				},
+			};
+		</script>
+		<script type="module" src="/src/main.jsx"></script>
+	</body>
+</html>
